@@ -704,6 +704,163 @@
       .footer-inner { flex-direction: column; gap: 14px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
+
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    [data-animate].visible {
+      opacity: 1;
+      transform: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-animate] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(12,8,5,0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      position: relative;
+      background: var(--surface);
+      border-radius: 26px;
+      padding: 42px 38px;
+      width: 100%;
+      max-width: 454px;
+      box-shadow: 0 40px 100px rgba(20,13,9,0.30);
+      transform: translateY(22px) scale(0.97);
+      transition: transform 0.38s cubic-bezier(0.34,1.42,0.64,1);
+    }
+    .modal-overlay.open .modal-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--surface-2);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1;
+      transition: background 0.2s, color 0.2s;
+    }
+    .modal-close:hover { background: var(--line); color: var(--text); }
+
+    .modal-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.1rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .modal-sub {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 26px;
+    }
+
+    .booking-form { display: grid; gap: 11px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+    }
+
+    .booking-form input,
+    .booking-form textarea,
+    .booking-form select {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: var(--surface-2);
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .booking-form input::placeholder,
+    .booking-form textarea::placeholder { color: var(--muted); }
+    .booking-form input:focus,
+    .booking-form textarea:focus,
+    .booking-form select:focus {
+      border-color: var(--accent);
+      background: var(--surface);
+    }
+    .booking-form textarea { resize: vertical; min-height: 84px; }
+
+    .btn-submit {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 20px;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.98rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .btn-submit:hover { background: var(--accent-dark); }
+
+    .modal-success {
+      display: none;
+      text-align: center;
+      padding: 12px 0 4px;
+    }
+    .modal-success.show { display: block; }
+    .success-icon { font-size: 2.6rem; margin-bottom: 14px; }
+    .modal-success h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.95rem;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .modal-success p { color: var(--muted); font-size: 0.97rem; line-height: 1.7; }
+
+    .modal-form-wrap.hide { display: none; }
+
+    @media (max-width: 768px) {
+      .modal-box { padding: 30px 22px; }
+      .form-row { grid-template-columns: 1fr; }
+      .modal-title { font-size: 1.85rem; }
+    }
   </style>
 </head>
 <body>
@@ -761,22 +918,22 @@
 
   <section class="section" id="about">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-animate>
         <span class="section-label">Why Nomad</span>
         <h2 class="section-title">More than coffee. A place to build, think, and belong.</h2>
       </div>
       <div class="features-grid">
-        <article class="feature-card">
+        <article class="feature-card" data-animate style="transition-delay:0.08s">
           <div class="chip">Coffee</div>
           <h3>Single-Origin Beans</h3>
           <p>Roasted in small batches every week. We source directly from farms in Ethiopia, Colombia, and Guatemala.</p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card" data-animate style="transition-delay:0.18s">
           <div class="chip">Workspace</div>
           <h3>Work-Friendly Space</h3>
           <p>High-speed fiber wifi, power outlets at every seat, and flexible seating for solo work or focused meetings.</p>
         </article>
-        <article class="feature-card">
+        <article class="feature-card" data-animate style="transition-delay:0.28s">
           <div class="chip">Daily Choice</div>
           <h3>Plant-Based Options</h3>
           <p>Oat, almond, and coconut milk available, plus a rotating selection of fresh pastries and lighter bites.</p>
@@ -788,20 +945,20 @@
   <section class="gallery-section">
     <div class="container">
       <div class="gallery-grid">
-        <div class="gallery-item" style="background-image:url('https://images.pexels.com/photos/34153867/pexels-photo-34153867.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop')"></div>
-        <div class="gallery-item" style="background-image:url('https://images.pexels.com/photos/4552172/pexels-photo-4552172.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop')"></div>
-        <div class="gallery-item" style="background-image:url('https://images.pexels.com/photos/4402584/pexels-photo-4402584.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop')"></div>
+        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/34153867/pexels-photo-34153867.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.05s"></div>
+        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/4552172/pexels-photo-4552172.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.15s"></div>
+        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/4402584/pexels-photo-4402584.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.25s"></div>
       </div>
     </div>
   </section>
 
   <section class="section menu-section" id="menu">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head" data-animate>
         <span class="section-label">Popular Picks</span>
         <h2 class="section-title">Crafted with intention, served with care.</h2>
       </div>
-      <div class="menu-wrap">
+      <div class="menu-wrap" data-animate style="transition-delay:0.1s">
         <div class="menu-cat">Coffee</div>
         <div class="menu-item">
           <div>
@@ -854,7 +1011,7 @@
   <section class="section" id="visit">
     <div class="container">
       <div class="info-grid">
-        <article class="info-card">
+        <article class="info-card" data-animate>
           <span class="section-label">Hours</span>
           <h2 class="section-title">When to visit</h2>
           <ul class="hours-list">
@@ -872,7 +1029,7 @@
             </li>
           </ul>
         </article>
-        <article class="info-card">
+        <article class="info-card" data-animate style="transition-delay:0.14s">
           <span class="section-label">Location</span>
           <h2 class="section-title">Find us here</h2>
           <div class="location-address">
@@ -898,7 +1055,7 @@
 
   <section class="cta" id="contact">
     <div class="container">
-      <div class="cta-box">
+      <div class="cta-box" data-animate>
         <h2>Ready for your first cup?</h2>
         <p>Reserve a table or a day pass online — or just walk in. We'd love to see you.</p>
         <button class="btn-cta" id="cta-book">Book a Table</button>
@@ -930,6 +1087,39 @@
     </div>
   </footer>
 
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Book a Table">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <div class="modal-form-wrap" id="modal-form-wrap">
+        <h2 class="modal-title">Book a Table</h2>
+        <p class="modal-sub">Fill in the details and we'll confirm within 24 hours.</p>
+        <form class="booking-form" id="booking-form" novalidate>
+          <div class="form-row">
+            <input type="text" placeholder="Your name" required autocomplete="name" />
+            <input type="email" placeholder="Email address" required autocomplete="email" />
+          </div>
+          <div class="form-row">
+            <input type="date" required />
+            <select>
+              <option value="" disabled selected>Party size</option>
+              <option>1 person</option>
+              <option>2 people</option>
+              <option>3–4 people</option>
+              <option>5+ people</option>
+            </select>
+          </div>
+          <textarea placeholder="Any special requests or notes?"></textarea>
+          <button type="submit" class="btn-submit">Send Request →</button>
+        </form>
+      </div>
+      <div class="modal-success" id="modal-success">
+        <div class="success-icon">☕</div>
+        <h3>You're all set!</h3>
+        <p>We've received your request and will confirm your booking at <strong>Nomad Coffee</strong> within 24 hours. See you soon.</p>
+      </div>
+    </div>
+  </div>
+
   <script>
     const toggle = document.querySelector('.menu-toggle');
     document.querySelectorAll('.mobile-menu a').forEach(a => {
@@ -944,6 +1134,57 @@
         toggle.setAttribute('aria-expanded', String(document.body.classList.contains('menu-open')));
       });
     }
+
+    const modal = document.getElementById('modal');
+    const formWrap = document.getElementById('modal-form-wrap');
+    const successEl = document.getElementById('modal-success');
+    const bookingForm = document.getElementById('booking-form');
+
+    function openModal() {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        formWrap.classList.remove('hide');
+        successEl.classList.remove('show');
+        bookingForm.reset();
+      }, 300);
+    }
+
+    ['nav-book','hero-book','cta-book'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', openModal);
+    });
+
+    document.getElementById('mobile-book')?.addEventListener('click', () => {
+      document.body.classList.remove('menu-open');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      openModal();
+    });
+
+    document.getElementById('modal-close')?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    bookingForm?.addEventListener('submit', e => {
+      e.preventDefault();
+      formWrap.classList.add('hide');
+      successEl.classList.add('show');
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -36px 0px' });
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
