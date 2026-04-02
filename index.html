@@ -657,29 +657,38 @@
       .hero-grid, .features-grid, .info-grid { grid-template-columns: 1fr; }
       .hero-visual { min-height: auto; max-width: 520px; margin: 0 auto; }
       .section-title, .hero h1 { max-width: none; }
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .hero { padding: 118px 0 64px; }
     }
 
     @media (max-width: 768px) {
       .container, .nav-inner, .mobile-menu {
         width: min(var(--max), calc(100% - 32px));
       }
-      .nav-inner { min-height: 72px; }
-      .nav-links { display: none; }
-      .menu-toggle { display: inline-flex; }
+      .nav-inner { min-height: 68px; }
 
-      .hero { padding: 106px 0 50px; }
-      .hero-grid { gap: 26px; }
-      .hero-visual { order: -1; max-width: 100%; }
-      .visual-card { aspect-ratio: 1/1; border-radius: 24px; }
-      .floating-review {
-        right: 0;
-        bottom: 14px;
-        min-width: 0;
-        max-width: 210px;
-        padding: 11px 14px;
+      .hero { padding: 106px 0 52px; }
+      .hero-grid { gap: 24px; }
+      .hero-visual {
+        order: -1;
+        max-width: 100%;
+        flex-direction: column;
+        align-items: stretch;
       }
-      .floating-review .score { font-size: 1.5rem; }
-      .floating-review .sub { font-size: 0.78rem; }
+      .visual-card { aspect-ratio: 4/3; border-radius: 22px; max-width: none; width: 100%; }
+      .floating-review {
+        position: static;
+        align-self: flex-end;
+        margin-top: 12px;
+        right: auto;
+        bottom: auto;
+        min-width: 0;
+        width: auto;
+        padding: 11px 15px;
+      }
+      .floating-review .score { font-size: 1.45rem; }
+      .floating-review .sub { font-size: 0.8rem; }
 
       .hero-actions { flex-direction: column; }
       .btn-primary, .btn-secondary, .btn-cta { width: 100%; min-width: 0; }
@@ -787,19 +796,30 @@
       margin-bottom: 26px;
     }
 
-    .booking-form { display: grid; gap: 11px; }
+    .booking-form { display: grid; gap: 14px; }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 11px;
+      gap: 12px;
+    }
+
+    .form-field { display: flex; flex-direction: column; gap: 5px; }
+
+    .form-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--muted);
     }
 
     .booking-form input,
     .booking-form textarea,
     .booking-form select {
       width: 100%;
-      padding: 12px 15px;
+      min-height: 48px;
+      padding: 0 15px;
       border-radius: 12px;
       border: 1.5px solid var(--line);
       background: var(--surface-2);
@@ -810,6 +830,12 @@
       transition: border-color 0.2s, background 0.2s;
       -webkit-appearance: none;
       appearance: none;
+      display: flex;
+      align-items: center;
+    }
+    .booking-form input[type="date"] {
+      padding: 0 15px;
+      cursor: pointer;
     }
     .booking-form input::placeholder,
     .booking-form textarea::placeholder { color: var(--muted); }
@@ -819,7 +845,12 @@
       border-color: var(--accent);
       background: var(--surface);
     }
-    .booking-form textarea { resize: vertical; min-height: 84px; }
+    .booking-form textarea {
+      resize: vertical;
+      min-height: 88px;
+      padding: 12px 15px;
+      align-items: flex-start;
+    }
 
     .btn-submit {
       width: 100%;
@@ -857,9 +888,17 @@
     .modal-form-wrap.hide { display: none; }
 
     @media (max-width: 768px) {
-      .modal-box { padding: 30px 22px; }
-      .form-row { grid-template-columns: 1fr; }
-      .modal-title { font-size: 1.85rem; }
+      .modal-overlay { align-items: flex-end; padding: 0; }
+      .modal-box {
+        padding: 28px 20px 36px;
+        border-radius: 26px 26px 0 0;
+        max-width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .form-row { grid-template-columns: 1fr; gap: 14px; }
+      .modal-title { font-size: 1.8rem; }
+      .modal-sub { margin-bottom: 20px; }
     }
   </style>
 </head>
@@ -1095,20 +1134,35 @@
         <p class="modal-sub">Fill in the details and we'll confirm within 24 hours.</p>
         <form class="booking-form" id="booking-form" novalidate>
           <div class="form-row">
-            <input type="text" placeholder="Your name" required autocomplete="name" />
-            <input type="email" placeholder="Email address" required autocomplete="email" />
+            <div class="form-field">
+              <label class="form-label" for="f-name">Name</label>
+              <input id="f-name" type="text" placeholder="Your full name" required autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="f-email">Email</label>
+              <input id="f-email" type="email" placeholder="your@email.com" required autocomplete="email" />
+            </div>
           </div>
           <div class="form-row">
-            <input type="date" required />
-            <select>
-              <option value="" disabled selected>Party size</option>
-              <option>1 person</option>
-              <option>2 people</option>
-              <option>3–4 people</option>
-              <option>5+ people</option>
-            </select>
+            <div class="form-field">
+              <label class="form-label" for="f-date">Date</label>
+              <input id="f-date" type="date" required />
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="f-size">Party Size</label>
+              <select id="f-size">
+                <option value="" disabled selected>Select…</option>
+                <option>1 person</option>
+                <option>2 people</option>
+                <option>3–4 people</option>
+                <option>5+ people</option>
+              </select>
+            </div>
           </div>
-          <textarea placeholder="Any special requests or notes?"></textarea>
+          <div class="form-field">
+            <label class="form-label" for="f-notes">Special Requests</label>
+            <textarea id="f-notes" placeholder="Dietary requirements, seating preferences, etc."></textarea>
+          </div>
           <button type="submit" class="btn-submit">Send Request →</button>
         </form>
       </div>
