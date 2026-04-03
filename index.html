@@ -294,7 +294,7 @@
       box-shadow: 0 30px 80px rgba(20,13,9,0.22);
       background-image:
         linear-gradient(to top, rgba(0,0,0,0.28), rgba(0,0,0,0.04)),
-        url("https://images.pexels.com/photos/29750589/pexels-photo-29750589.jpeg?auto=compress&cs=tinysrgb&w=1080&fit=crop");
+        url("https://images.pexels.com/photos/3887985/pexels-photo-3887985.jpeg?auto=compress&cs=tinysrgb&w=1080&fit=crop");
       background-size: cover;
       background-position: center;
       background-color: #271a12;
@@ -666,20 +666,41 @@
     }
 
     @media (max-width: 768px) {
-      .container, .nav-inner, .mobile-menu {
+      .container, .mobile-menu {
         width: min(var(--max), calc(100% - 32px));
       }
-      .nav-inner { min-height: 68px; }
+      .nav-links,
+      .nav-links li,
+      .nav-links a,
+      .nav-links .btn-nav { display: none !important; visibility: hidden !important; }
+      .menu-toggle { display: inline-flex !important; }
+      .nav-inner {
+        width: calc(100% - 32px);
+        margin: 0 auto;
+        min-height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        gap: 12px;
+      }
+      .logo { flex-shrink: 1; min-width: 0; }
 
-      .hero { padding: 112px 0 60px; }
-      .hero-grid { gap: 24px; }
+      .hero { padding: 116px 0 60px; }
+      .hero-grid { gap: 20px; }
       .hero-visual {
         order: -1;
         max-width: 100%;
+        width: 100%;
         flex-direction: column;
         align-items: stretch;
       }
-      .visual-card { aspect-ratio: 4/5; border-radius: 22px; max-width: none; width: 100%; }
+      .visual-card {
+        aspect-ratio: 3 / 4;
+        border-radius: 20px;
+        max-width: 100%;
+        width: 100%;
+      }
       .floating-review {
         position: static;
         align-self: flex-end;
