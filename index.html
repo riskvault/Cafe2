@@ -698,8 +698,8 @@
       .visual-card {
         aspect-ratio: 3 / 4;
         border-radius: 20px;
-        max-width: 100%;
         width: 100%;
+        max-width: none;
       }
       .floating-review {
         position: static;
@@ -931,7 +931,7 @@
   <nav>
     <div class="nav-inner">
       <a href="#" class="logo">nomad<span>.</span></a>
-      <ul class="nav-links" style="display:none">
+      <ul class="nav-links">
         <li><a href="#menu">Menu</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#visit">Visit</a></li>
@@ -1199,21 +1199,6 @@
   </div>
 
   <script>
-    // Force-hide nav-links on sub-desktop viewports via JS (belt + suspenders)
-    const navLinks = document.querySelector('.nav-links');
-    function syncNavLinks() {
-      if (!navLinks) return;
-      if (window.innerWidth < 1025) {
-        navLinks.style.setProperty('display', 'none', 'important');
-        navLinks.style.setProperty('visibility', 'hidden', 'important');
-      } else {
-        navLinks.style.removeProperty('display');
-        navLinks.style.removeProperty('visibility');
-      }
-    }
-    syncNavLinks();
-    window.addEventListener('resize', syncNavLinks);
-
     const toggle = document.querySelector('.menu-toggle');
     document.querySelectorAll('.mobile-menu a').forEach(a => {
       a.addEventListener('click', () => {
