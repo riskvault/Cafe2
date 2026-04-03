@@ -80,7 +80,7 @@
 
     .nav-links {
       list-style: none;
-      display: flex;
+      display: none;
       align-items: center;
       gap: 26px;
     }
@@ -114,7 +114,7 @@
     .btn-nav:hover { background: var(--accent-dark); }
 
     .menu-toggle {
-      display: none;
+      display: inline-flex;
       width: 54px;
       height: 54px;
       border-radius: 16px;
@@ -294,7 +294,7 @@
       box-shadow: 0 30px 80px rgba(20,13,9,0.22);
       background-image:
         linear-gradient(to top, rgba(0,0,0,0.28), rgba(0,0,0,0.04)),
-        url("https://images.pexels.com/photos/15998893/pexels-photo-15998893.jpeg?auto=compress&cs=tinysrgb&w=1080&fit=crop");
+        url("https://images.pexels.com/photos/29750589/pexels-photo-29750589.jpeg?auto=compress&cs=tinysrgb&w=1080&fit=crop");
       background-size: cover;
       background-position: center;
       background-color: #271a12;
@@ -653,12 +653,15 @@
     .footer-legal a { font-size: 0.82rem; color: var(--muted); transition: color 0.2s; }
     .footer-legal a:hover { color: var(--text); }
 
+    @media (min-width: 1025px) {
+      .nav-links { display: flex; }
+      .menu-toggle { display: none; }
+    }
+
     @media (max-width: 1024px) {
       .hero-grid, .features-grid, .info-grid { grid-template-columns: 1fr; }
       .hero-visual { min-height: auto; max-width: 520px; margin: 0 auto; }
       .section-title, .hero h1 { max-width: none; }
-      .nav-links { display: none; }
-      .menu-toggle { display: inline-flex; }
       .hero { padding: 118px 0 64px; }
     }
 
@@ -668,7 +671,7 @@
       }
       .nav-inner { min-height: 68px; }
 
-      .hero { padding: 106px 0 52px; }
+      .hero { padding: 112px 0 60px; }
       .hero-grid { gap: 24px; }
       .hero-visual {
         order: -1;
@@ -676,7 +679,7 @@
         flex-direction: column;
         align-items: stretch;
       }
-      .visual-card { aspect-ratio: 4/3; border-radius: 22px; max-width: none; width: 100%; }
+      .visual-card { aspect-ratio: 4/5; border-radius: 22px; max-width: none; width: 100%; }
       .floating-review {
         position: static;
         align-self: flex-end;
