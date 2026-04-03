@@ -81,7 +81,7 @@
 
     .nav-links {
       list-style: none;
-      display: none;
+      display: none !important;
       align-items: center;
       gap: 26px;
     }
@@ -655,8 +655,8 @@
     .footer-legal a:hover { color: var(--text); }
 
     @media (min-width: 1025px) {
-      .nav-links { display: flex; }
-      .menu-toggle { display: none; }
+      .nav-links { display: flex !important; }
+      .menu-toggle { display: none !important; }
     }
 
     @media (max-width: 1024px) {
