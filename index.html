@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- v1775223168 -->
+  <!-- v2-header-fix-2026 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nomad Coffee — Specialty Coffee &amp; Workspace · Ulaanbaatar</title>
@@ -49,7 +49,7 @@
       margin: 0 auto;
     }
 
-    nav {
+    .site-header {
       position: fixed;
       inset: 0 0 auto 0;
       z-index: 100;
@@ -654,14 +654,6 @@
     .footer-legal a { font-size: 0.82rem; color: var(--muted); transition: color 0.2s; }
     .footer-legal a:hover { color: var(--text); }
 
-    nav.footer-nav {
-      position: static;
-      background: none;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border-bottom: none;
-    }
-
     @media (min-width: 1025px) {
       .nav-links { display: flex !important; }
       .menu-toggle { display: none !important; }
@@ -938,7 +930,7 @@
 </head>
 <body>
 
-  <nav>
+  <header class="site-header">
     <div class="nav-inner">
       <a href="#" class="logo">nomad<span>.</span></a>
       <ul class="nav-links">
@@ -957,7 +949,7 @@
       <a href="#visit">Visit</a>
       <button class="btn-mobile-nav" id="mobile-book">Book a Table</button>
     </div>
-  </nav>
+  </header>
 
   <section class="hero">
     <div class="container hero-grid">
@@ -1143,12 +1135,12 @@
           <div class="logo">nomad<span>.</span></div>
           <p class="footer-tag">Specialty Coffee &amp; Workspace · Ulaanbaatar, Mongolia</p>
         </div>
-        <nav class="footer-nav">
+        <div class="footer-nav">
           <a href="#menu">Menu</a>
           <a href="#about">About</a>
           <a href="#visit">Visit</a>
           <a href="#contact">Contact</a>
-        </nav>
+        </div>
       </div>
       <div class="footer-bottom">
         <p>© 2026 Nomad Coffee. Crafted with care in Ulaanbaatar.</p>
