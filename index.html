@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- v2-header-fix-2026 -->
+  <!-- v3-visual-upgrade-2026 -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nomad Coffee — Specialty Coffee &amp; Workspace · Ulaanbaatar</title>
@@ -368,8 +368,21 @@
       background: var(--surface);
       border: 1px solid rgba(0,0,0,0.05);
       border-radius: 22px;
-      padding: 26px;
+      padding: 0;
+      overflow: hidden;
       box-shadow: var(--shadow-soft);
+    }
+
+    .card-photo {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--surface-2);
+    }
+
+    .card-body {
+      padding: 24px 26px 26px;
     }
 
     .chip {
@@ -408,6 +421,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
       gap: 14px;
     }
 
@@ -722,10 +736,10 @@
       .section, .cta { padding: 58px 0; }
       .gallery-section { padding: 0 0 58px; }
       .features-grid { gap: 10px; }
-      .feature-card { padding: 20px; }
+      .feature-card .card-body { padding: 16px 20px 20px; }
 
-      .gallery-grid { grid-template-columns: 1fr; gap: 10px; }
-      .gallery-item { aspect-ratio: 16/10; border-radius: 16px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .gallery-item { aspect-ratio: 4/3; border-radius: 16px; }
 
       .menu-cat { padding: 10px 18px; }
       .menu-item { padding: 20px 18px; gap: 12px; }
@@ -989,19 +1003,28 @@
       </div>
       <div class="features-grid">
         <article class="feature-card" data-animate style="transition-delay:0.08s">
-          <div class="chip">Coffee</div>
-          <h3>Single-Origin Beans</h3>
-          <p>Roasted in small batches every week. We source directly from farms in Ethiopia, Colombia, and Guatemala.</p>
+          <div class="card-photo" style="background-image:url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop')"></div>
+          <div class="card-body">
+            <div class="chip">Coffee</div>
+            <h3>Single-Origin Beans</h3>
+            <p>Roasted in small batches every week. We source directly from farms in Ethiopia, Colombia, and Guatemala.</p>
+          </div>
         </article>
         <article class="feature-card" data-animate style="transition-delay:0.18s">
-          <div class="chip">Workspace</div>
-          <h3>Work-Friendly Space</h3>
-          <p>High-speed fiber wifi, power outlets at every seat, and flexible seating for solo work or focused meetings.</p>
+          <div class="card-photo" style="background-image:url('https://images.pexels.com/photos/4050299/pexels-photo-4050299.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop')"></div>
+          <div class="card-body">
+            <div class="chip">Workspace</div>
+            <h3>Work-Friendly Space</h3>
+            <p>High-speed fiber wifi, power outlets at every seat, and flexible seating for solo work or focused meetings.</p>
+          </div>
         </article>
         <article class="feature-card" data-animate style="transition-delay:0.28s">
-          <div class="chip">Daily Choice</div>
-          <h3>Plant-Based Options</h3>
-          <p>Oat, almond, and coconut milk available, plus a rotating selection of fresh pastries and lighter bites.</p>
+          <div class="card-photo" style="background-image:url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop')"></div>
+          <div class="card-body">
+            <div class="chip">Daily Choice</div>
+            <h3>Plant-Based Options</h3>
+            <p>Oat, almond, and coconut milk available, plus a rotating selection of fresh pastries and lighter bites.</p>
+          </div>
         </article>
       </div>
     </div>
@@ -1010,9 +1033,12 @@
   <section class="gallery-section">
     <div class="container">
       <div class="gallery-grid">
-        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/34153867/pexels-photo-34153867.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.05s"></div>
-        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/4552172/pexels-photo-4552172.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.15s"></div>
-        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/4402584/pexels-photo-4402584.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.25s"></div>
+        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/1813466/pexels-photo-1813466.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.05s"></div>
+        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.10s"></div>
+        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/4050299/pexels-photo-4050299.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.15s"></div>
+        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.20s"></div>
+        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/4552172/pexels-photo-4552172.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.25s"></div>
+        <div class="gallery-item" data-animate style="background-image:url('https://images.pexels.com/photos/4402584/pexels-photo-4402584.jpeg?auto=compress&cs=tinysrgb&w=900&fit=crop');transition-delay:0.30s"></div>
       </div>
     </div>
   </section>
@@ -1024,52 +1050,74 @@
         <h2 class="section-title">Crafted with intention, served with care.</h2>
       </div>
       <div class="menu-wrap" data-animate style="transition-delay:0.1s">
-        <div class="menu-cat">Coffee</div>
+        <div class="menu-cat">Coffee &amp; Beverages</div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-name">Espresso</div>
+            <div class="menu-desc">Single or double shot, single-origin</div>
+          </div>
+          <div class="menu-price">₮4,500</div>
+        </div>
         <div class="menu-item">
           <div>
             <div class="menu-name">Flat White</div>
             <div class="menu-desc">Double ristretto, velvet microfoam</div>
           </div>
-          <div class="menu-price">$4.50</div>
+          <div class="menu-price">₮6,500</div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-name">Pour Over</div>
+            <div class="menu-desc">Ethiopia / Colombia / Guatemala — rotating</div>
+          </div>
+          <div class="menu-price">₮7,000</div>
         </div>
         <div class="menu-item">
           <div>
             <div class="menu-name">Cold Brew</div>
             <div class="menu-desc">18-hour steep, served on ice</div>
           </div>
-          <div class="menu-price">$5.00</div>
+          <div class="menu-price">₮6,000</div>
         </div>
         <div class="menu-item">
           <div>
             <div class="menu-name">Matcha Latte</div>
-            <div class="menu-desc">Ceremonial-grade matcha, oat milk</div>
+            <div class="menu-desc">Ceremonial-grade matcha, oat or almond milk</div>
           </div>
-          <div class="menu-price">$5.50</div>
+          <div class="menu-price">₮7,500</div>
         </div>
-        <div class="menu-cat">Food</div>
+        <div class="menu-cat">Food &amp; Pastries</div>
         <div class="menu-item">
           <div>
             <div class="menu-name">Avocado Toast</div>
-            <div class="menu-desc">Sourdough, chili flakes, lime</div>
+            <div class="menu-desc">Sourdough, chili flakes, lime — plant-based</div>
           </div>
-          <div class="menu-price">$8.00</div>
+          <div class="menu-price">₮9,500</div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="menu-name">Croissant</div>
+            <div class="menu-desc">Butter or almond — baked fresh daily</div>
+          </div>
+          <div class="menu-price">₮5,000</div>
         </div>
         <div class="menu-item">
           <div>
             <div class="menu-name">Banana Bread</div>
             <div class="menu-desc">Walnut, dark chocolate chunks</div>
           </div>
-          <div class="menu-price">$4.00</div>
+          <div class="menu-price">₮4,500</div>
         </div>
         <div class="menu-cat">Workspace</div>
         <div class="menu-item">
           <div>
             <div class="menu-name">Day Pass</div>
-            <div class="menu-desc">Unlimited coffee + full workspace access</div>
+            <div class="menu-desc">Unlimited coffee + full workspace access, fast wifi</div>
           </div>
-          <div class="menu-price">$15.00</div>
+          <div class="menu-price">₮52,000</div>
         </div>
       </div>
+      <p style="color:var(--muted);font-size:0.82rem;margin-top:16px;text-align:right;">* Цены в MNT. Меню меняется по сезону.</p>
     </div>
   </section>
 
